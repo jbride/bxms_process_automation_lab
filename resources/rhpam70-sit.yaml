@@ -508,6 +508,7 @@ objects:
     labels:
       application: "${APPLICATION_NAME}"
   spec:
+    paused: true
     strategy:
       type: Recreate
     triggers:
@@ -619,6 +620,7 @@ objects:
     labels:
       application: "${APPLICATION_NAME}"
   spec:
+    paused: true
     strategy:
       type: Recreate
     triggers:
@@ -693,6 +695,7 @@ objects:
     labels:
       application: "${APPLICATION_NAME}"
   spec:
+    paused: true
     strategy:
       type: Recreate
     triggers:
@@ -835,6 +838,7 @@ objects:
     labels:
       application: "${APPLICATION_NAME}"
   spec:
+    paused: true
     strategy:
       type: Recreate
     triggers:
@@ -887,6 +891,7 @@ objects:
     labels:
       application: "${APPLICATION_NAME}"
   spec:
+    paused: true
     strategy:
       type: Recreate
     triggers:
@@ -1029,6 +1034,7 @@ objects:
     labels:
       application: "${APPLICATION_NAME}"
   spec:
+    paused: true
     strategy:
       type: Recreate
     triggers:

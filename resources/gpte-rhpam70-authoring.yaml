@@ -415,8 +415,8 @@ objects:
             readOnly: true
           - name: "${APPLICATION_NAME}-rhpamcentr-pvol"
             mountPath: "/opt/eap/standalone/data/bpmsuite"
-          - mountPath: /opt/eap/standalone/configuration/application-roles.properties
-            name: pam-role-vol \
+          - name: pam-role-vol \
+            mountPath: /opt/eap/standalone/configuration/application-roles.properties
             subPath: application-roles.properties
           livenessProbe:
             httpGet:
@@ -519,9 +519,9 @@ objects:
         - name: "${APPLICATION_NAME}-rhpamcentr-pvol"
           persistentVolumeClaim:
             claimName: "${APPLICATION_NAME}-rhpamcentr-claim"
-        - configMap:
+        - name: pam-role-vol
+          configMap:
             name: pam-roles-cm
-          name: pam-role-vol
 - kind: DeploymentConfig
   apiVersion: v1
   metadata:

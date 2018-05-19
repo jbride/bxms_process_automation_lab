@@ -415,8 +415,9 @@ objects:
             readOnly: true
           - name: "${APPLICATION_NAME}-rhpamcentr-pvol"
             mountPath: "/opt/eap/standalone/data/bpmsuite"
-          - mountPath: /opt/eap/standalone/configuration/
-            name: pam-role-vol
+          - mountPath: /opt/eap/standalone/configuration/application-roles.properties
+            name: pam-role-vol \
+            subPath: application-roles.properties
           livenessProbe:
             httpGet:
               path: /kie-wb.jsp

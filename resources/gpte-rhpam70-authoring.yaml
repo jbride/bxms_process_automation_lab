@@ -522,7 +522,6 @@ objects:
         - configMap:
             name: pam-roles-cm
           name: pam-role-vol
-        name: pam-role-vol
 - kind: DeploymentConfig
   apiVersion: v1
   metadata:

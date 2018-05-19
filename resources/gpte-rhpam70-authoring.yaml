@@ -521,6 +521,7 @@ objects:
             claimName: "${APPLICATION_NAME}-rhpamcentr-claim"
         - name: pam-role-vol
           configMap:
+            defaultMode: 511
             name: pam-roles-cm
 - kind: DeploymentConfig
   apiVersion: v1

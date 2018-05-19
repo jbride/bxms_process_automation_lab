@@ -415,6 +415,8 @@ objects:
             readOnly: true
           - name: "${APPLICATION_NAME}-rhpamcentr-pvol"
             mountPath: "/opt/eap/standalone/data/bpmsuite"
+          - mountPath: /opt/eap/standalone/configuration/application-roles.properties
+            name: pam-role-vol
           livenessProbe:
             httpGet:
               path: /kie-wb.jsp
@@ -444,6 +446,11 @@ objects:
             containerPort: 8001
             protocol: TCP
           env:
+          
+          # dtorresf: Enable ssh access through external tools like JBDS
+          - name: JAVA_OPTS_APPEND
+            value: '-Dorg.uberfire.nio.git.ssh.algorithm=RSA -Dorg.uberfire.nio.git.ssh.host=0.0.0.0'
+          
           - name: KIE_ADMIN_USER
             value: "${KIE_ADMIN_USER}"
           - name: KIE_ADMIN_PWD
@@ -511,6 +518,10 @@ objects:
         - name: "${APPLICATION_NAME}-rhpamcentr-pvol"
           persistentVolumeClaim:
             claimName: "${APPLICATION_NAME}-rhpamcentr-claim"
+        - configMap:
+            name: pam-roles-cm
+          name: pam-role-vol
+        name: pam-role-vol
 - kind: DeploymentConfig
   apiVersion: v1
   metadata:
@@ -696,3 +707,14 @@ objects:
     resources:
       requests:
         storage: "${DB_VOLUME_CAPACITY}"
+
+- apiVersion: v1
+  data:
+    application-roles.properties: |
+      controllerUser=kie-server,rest-all,guest
+
+      # As per Duncan's request, adding additional roles
+      adminUser=kie-server,rest-all,admin,kiemgmt,Administrators,manager,broker,appraiser
+  kind: ConfigMap
+  metadata:
+    name: pam-roles-cm

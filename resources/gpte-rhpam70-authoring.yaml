@@ -415,7 +415,7 @@ objects:
             readOnly: true
           - name: "${APPLICATION_NAME}-rhpamcentr-pvol"
             mountPath: "/opt/eap/standalone/data/bpmsuite"
-          - mountPath: /opt/eap/standalone/configuration/application-roles.properties
+          - mountPath: /opt/eap/standalone/configuration/
             name: pam-role-vol
           livenessProbe:
             httpGet:
@@ -709,12 +709,14 @@ objects:
         storage: "${DB_VOLUME_CAPACITY}"
 
 - apiVersion: v1
+  kind: ConfigMap
   data:
     application-roles.properties: |
       controllerUser=kie-server,rest-all,guest
 
       # As per Duncan's request, adding additional roles
       adminUser=kie-server,rest-all,admin,kiemgmt,Administrators,manager,broker,appraiser
-  kind: ConfigMap
   metadata:
+    labels:
+      application: "${APPLICATION_NAME}"
     name: pam-roles-cm

@@ -389,10 +389,10 @@ objects:
     strategy:
       type: Recreate
       recreateParams:
-        post:
+        post: 
           failurePolicy: Abort
           execNewPod:
-            command: "/bin/sh -i -c echo jeff > /tmp/test.txt"
+            command: ["/bin/sh -i -c echo jeff > /tmp/test.txt"]
     triggers:
     - type: ImageChange
       imageChangeParams:

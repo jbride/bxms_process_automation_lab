@@ -392,8 +392,10 @@ objects:
         post: 
           failurePolicy: Abort
           execNewPod:
-            command: [ |-
-              sed -i  "s/Administrators/Administrators,manager,broker,appraiser/" /opt/eap/standalone/configuration/application-roles.properties
+            command: [ 
+              - /bin/sh
+              - -c 
+              - sed -i "s/Administrators/Administrators,manager,broker,appraiser/" /opt/eap/standalone/configuration/application-roles.properties
             ]
     triggers:
     - type: ImageChange

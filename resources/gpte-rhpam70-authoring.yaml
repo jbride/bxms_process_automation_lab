@@ -395,7 +395,7 @@ objects:
             command:
             - /bin/sh
             - -c 
-            - echo "hello jeff. props as follows:" && cat /opt/eap/standalone/configuration/application-roles.properties
+            - echo "hello jeff props as follows:" && cat /opt/eap/standalone/configuration/application-roles.properties
 #            - sed -i "s/Administrators/Administrators,manager,broker,appraiser/" /opt/eap/standalone/configuration/application-roles.properties
     triggers:
     - type: ImageChange

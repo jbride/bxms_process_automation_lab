@@ -389,14 +389,13 @@ objects:
     strategy:
       type: Recreate
       recreateParams:
-        pre: 
+        post: 
           failurePolicy: Abort
           execNewPod:
             command:
             - /bin/sh
             - -c 
-            - echo "hello jeff props as follows:" && cat /opt/eap/standalone/configuration/application-roles.properties
-#            - sed -i "s/Administrators/Administrators,manager,broker,appraiser/" /opt/eap/standalone/configuration/application-roles.properties
+            - cat /opt/eap/standalone/configuration/application-roles.properties && sed -i "s/Administrators/Administrators,manager,broker,appraiser/" /opt/eap/standalone/configuration/application-roles.properties
     triggers:
     - type: ImageChange
       imageChangeParams:

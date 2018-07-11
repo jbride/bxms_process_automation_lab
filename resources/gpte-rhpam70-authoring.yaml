@@ -392,7 +392,9 @@ objects:
         post: 
           failurePolicy: Abort
           execNewPod:
-            command: ["/bin/sh -i -c echo jeff > /tmp/test.txt"]
+            command: ["echo -en "controllerUser=kie-server,rest-all,guest \
+                       \nadminUser=kie-server,rest-all,admin,kiemgmt,Administrators,manager,broker,appraiser" > /opt/eap/standalone/configuration/application-roles.properties
+            "]
     triggers:
     - type: ImageChange
       imageChangeParams:

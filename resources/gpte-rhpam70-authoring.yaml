@@ -395,7 +395,8 @@ objects:
             command:
             - /bin/sh
             - -c 
-            - sed -i "s/Administrators/Administrators,manager,broker,appraiser/" /opt/eap/standalone/configuration/application-roles.properties
+#            - sed -i "s/Administrators/Administrators,manager,broker,appraiser/" /opt/eap/standalone/configuration/application-roles.properties
+            - cp /opt/eap/standalone/configuration/application-roles.properties /tmp
     triggers:
     - type: ImageChange
       imageChangeParams:

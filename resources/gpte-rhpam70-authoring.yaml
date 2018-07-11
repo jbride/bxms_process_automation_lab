@@ -392,7 +392,8 @@ objects:
         post: 
           failurePolicy: Abort
           execNewPod:
-            command: [ 
+            command: [
+              |- 
               sed -i  "s/Administrators/Administrators,manager,broker,appraiser/" /opt/eap/standalone/configuration/application-roles.properties
             ]
     triggers:
